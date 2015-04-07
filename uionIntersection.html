@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<script>
+    (function t(){
+        console.log(x);
+        var  x=100;
+
+        /*
+        same as var x;
+        console.log(x);
+        x=100;
+         */
+
+
+        function z(){
+
+            console.log(sum(4,5));
+            function sum(x,y){
+                return x+y;
+            }
+        }
+
+    })();
+
+    function t(){
+        console.log(sum);
+
+        var sum=function (x,y){
+            return (x+y);
+        }
+        console.log(typeof sum);
+    }
+    t();
+
+    (function y(x){
+        console.log(x);
+
+    })(10);
+    console.log(typeof y);
+
+    function m(x){
+        console.log(x);
+
+    }
+    m(10);
+    console.log(typeof m);
+
+
+    function Person(){
+        this.name="xyz";
+        console.log(this) //points to global object by default. In this case window object
+    }
+
+    /*
+
+     */
+
+    function sum() {
+        console.log(arguments);
+
+
+        return Array.prototype.reduce.call(arguments, function (a, b) {
+            return a + b;
+        });
+    }
+
+            console.log(sum(10,11,12));
+
+
+
+</script>
+
+
+<body>
+
+</body>
+</html>

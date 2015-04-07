@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <script>
+
+    </script>
+
+    <style>
+        div.square {
+            width:500px;
+            height:300px;
+            border:1px solid gray;
+
+            position:relative;
+        }
+
+        div.ball{
+            width:20px;
+            height:20px;
+            background-color:red;
+
+            border-radius: 10px;
+
+            position:absolute;
+            top:0;
+
+        }
+    </style>
+
+
+
+</head>
+<body>
+<div class="square">
+    <div class="ball">
+
+    </div>
+
+</div>
+
+
+<script>
+    /*
+    var ball=document.querySelector('div.ball');
+    //top is a propertyof window cannot be overridden. use topprop instead
+    var topprop=0;
+    intervalid= setInterval(function () {
+        console.log(topprop);
+
+            ball.style.top = topprop++ + 'px';
+
+        console.log(ball.style.topprop);
+        },100);
+*/
+</script>
+
+<script>
+    (function() {
+        var ball=document.querySelector('div.ball');
+        var curr=0;
+        var top = 0;
+
+        var bottom=document.querySelector('div.square').clientHeight - ball.clientHeight;
+        var upwards="false";
+
+        console.log(bottom);
+        setInterval(function () {
+
+            if(upwards){
+                console.log('moving upwards');
+
+                if(curr<=top){
+                    upwards=false;
+                }
+                else{
+
+
+                ball.style.top=curr-- + 'px';
+
+                    top=top+2;
+
+                }
+
+
+            }
+           // console.log(top);
+            else {
+                console.log('moving downwards');
+
+                if(curr>=bottom) {
+
+                    upwards=true;
+                }
+                else{
+                    ball.style.top = curr++ + 'px';
+                    top = top - 1;
+                }
+
+
+
+            }
+
+        }, 1);
+    }());
+</script>
+
+</body>
+</html>

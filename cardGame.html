@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function Card(suit, val) {
+            this.suit = suit;
+            this.val = val;
+        }
+        Card.suits = ['Hearts', 'Spades', 'Clubs', 'Diamonds'];
+        Card.values = ['Ace', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King'];
+        Card.prototype.toString = function () {
+            return Card.values[this.val] + ' of ' + Card.suits[this.suit]
+        };
+        function Deck() {
+            var cards = [];
+            for (var i = 0, len = 4; i < len; i++) {
+                for (var j = 0, lenj = 13; j < lenj; j++) {
+                    cards.push(new Card(i, j));
+                }
+            }
+            this.cards = cards;
+        }
+        Deck.prototype.toString = function () {
+            return this.cards.map(function (card) {
+                return card.toString();
+            });
+        };
+        Deck.prototype.shuffle = function () {
+            var randomIndex = 0, temp;
+            for (var i = 0, len = 52; i < len; i++) {
+                randomIndex = Math.floor(Math.random() * (this.cards.length - 1));
+                temp = this.cards[i];
+                this.cards[i] = this.cards[randomIndex];
+                this.cards[randomIndex] = temp;
+            }
+        };
+        var deck = new Deck();
+        console.log(deck.toString());
+        deck.shuffle();
+        console.log(deck.toString());
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="bower_components/jasmine/lib/jasmine-core/jasmine.js"></script>
+    <script>
+        // test cases
+        function Test() {}
+        Test.assert = function (act, exp) {
+            if (exp !== act) {
+                console.log('Did not pass test - Expected ' + exp + ' got ' + act);
+            }
+        };
+
+
+        // function to check for primes
+        function isPrime(n) {
+
+
+            if (n < 2) {
+                return false
+            }
+
+
+
+            var isPrime = true;
+
+
+            for (var i = 2; i <= Math.sqrt(n); i++) {
+                if (n % i == 0) {isPrime = false}
+            }
+
+
+            return isPrime;
+
+        }
+        // test cases
+        Test.assert(isPrime(2), true);
+        Test.assert(isPrime(4), false);
+        Test.assert(isPrime(11), true);
+        Test.assert(isPrime(12), false);
+        // function to get factorials
+
+
+       function factorial(num) {
+         switch (num) {
+         case 0: return 1;
+         case 1: return 1;
+         default: if(num < 0) throw 'Invalid input';
+         else return num * factorial(num - 1);
+         }
+         }
+
+
+
+/*
+      function factorial(n){
+            if(n==0||n==1){
+                return 1;
+            }
+            else{
+                return n*factorial(n-1);
+            }
+
+        }
+*/
+
+        // test cases
+        Test.assert(factorial(2), 2);
+        try {
+            Test.assert(factorial(-2), '"should throw an error - Invalid input"');
+        } catch (ex) {
+            Test.assert(ex, 'Invalid input');
+        }
+        Test.assert(factorial(5), 120);
+
+
+        // function schematester
+        function Schema(schema) {
+            this.schema = schema;
+            this.sortedKeys = Object.keys(schema).sort();
+        }
+        Schema.prototype.test = function (obj) {
+        };
+        var schema = new Schema({
+            name: 'string',
+            id: 'number',
+            date: 'object'
+        });
+
+
+
+        function intersection(arr1, arr2) {
+            var intersect = [];
+            for(var prop in arr2) {
+                if(arr1[prop] == arr2[prop]) {
+                    intersect.push(arr2[prop]);
+
+                }
+            }
+            return intersect;
+        }
+
+
+
+
+
+        function union(arr1, arr2) {
+
+            var union=arr1;
+
+            for(var prop in arr2) {
+                if(arr1[prop] !== arr2[prop]) {
+                    union.push(arr2[prop]);
+
+                }
+            }
+            return union;
+        }
+
+
+
+
+
+
+        Test.assert(schema.test({
+            name: 'Raymond'
+        }), false);
+
+
+        Schema.prototype.test = function (obj) {
+
+            if(union(schema,schema.test)===intersection(schema,schema.test)){
+
+                console.log("schema match");
+            }
+            else{
+
+                console.log("no match")
+            }
+
+            console.log('Done with the tests.');
+
+        };
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+<script>
+
+        var schema = {
+
+            name: "string",
+            id: "number",
+            date: "object"
+        };
+
+        console.log(Object.keys(schema).sort());
+         var i=Object.keys(schema).length;
+         // console.log(i);
+
+         var x={
+             date: "object",
+             name:"Raymond",
+             id:"1234"
+         };
+
+        console.log(Object.keys(x).sort());
+        var j=Object.keys(x).length;
+    //    console.log(j);
+
+
+
+        if(i===j){
+            for (var prop in schema) {
+                if( schema.hasOwnProperty( prop ) ) {
+
+                    var s= Object.keys(schema).sort();
+
+                }
+            console.log(s);
+
+            }
+
+            for (var prop in x) {
+                if( x.hasOwnProperty( prop ) ) {
+                    var t= prop;
+                   // console.log(t);
+                }
+            }
+          if(s===t){
+              console.log("true");
+          }
+            else{
+              console.log("false");
+          }
+        }
+       else{
+            console.log("false");
+        }
+      // var i= Object.keys(x).sort();
+       //
+       // var j= Object.keysI.sort(schema);
+
+
+
+
+
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

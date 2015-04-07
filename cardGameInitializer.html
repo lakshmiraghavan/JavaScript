@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        html,body{
+            height:100%;
+            width:100%;
+        }
+
+        div.Game {
+            margin:10px;
+            height:300px;
+            width:200px;
+            background-color: blue;
+            float:left;
+        }
+    </style>
+
+
+
+    <script>
+
+
+        document.addEventListener('readystatechange',function() {
+            if (document.readyState === 'interactive') {
+                for(var i=0;i<4;i++) {
+                    var div = document.createElement('div');
+                    div.className = 'Game';
+                    document.body.appendChild(div);
+                    // console.log(div);
+                }
+
+                deck.replaceCard(c1,c2);
+                deck.shuffle();
+                var arr=deck.toString();
+
+
+                console.log(deck.toString());
+                var divs = document.querySelectorAll('div.Game');
+
+                for (var j=0; j < divs.length;j++){
+                    for(var c= 0;c < 13;c++){
+                        divs[j].innerHTML=divs[j].innerHTML +'<br>'+ arr.pop();
+
+                    }
+
+                }
+
+            }
+        });
+
+        function Card(suit, value){
+            this.suit=suit;
+            this.value=value;
+
+        }
+
+        Card.suits = ['Hearts', 'Spades', 'Clubs', 'Diamonds'];
+        Card.values = ['Ace', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King'];
+
+        Card.prototype.toString=function(){
+
+
+
+            if(this.value===-1){
+                return this.suit;
+            }
+            else{
+                return Card.values[this.value]+" "+"of"+" "+Card.suits[this.suit];
+            }
+        };
+
+
+        function Deck(){
+        var cardDeck=[];
+            for (var i = 0, len = 4; i < len; i++) {
+                for (var j = 0, lenj = 13; j < lenj; j++) {
+                    cardDeck.push(new Card(i, j));
+                }
+            }
+            this.cardDeck = cardDeck;
+        }
+
+        Deck.prototype.toString = function () {
+            return this.cardDeck.map(function (card) {
+                return card.toString();
+            });
+        };
+
+
+        Deck.prototype.shuffle= function (){
+            var random= 0, tempDeck;
+
+            for(var i=0;len=52,i<len;i++){
+
+                 ramdom=Math.floor(Math.random() * (this.cardDeck.length - 1));
+
+                tempDeck=this.cardDeck[i];
+                this.cardDeck[i]=this.cardDeck[random];
+                this.cardDeck[random]=tempDeck;
+            }
+
+        };
+
+        Deck.prototype.shuffleBlock=function(noOfCards,count){
+            var shuffle=[];
+            var blk=[];
+            var temp;
+            var retain=this.cardDeck.splice(this.cardDeck[0],this.cardDeck.length - (noOfCards * count));
+
+            for (var j=count;j>0;j--) {
+                blk.push(this.cardDeck.slice(this.cardDeck.length - noOfCards, this.cardDeck.length));
+
+                this.cardDeck=this.cardDeck.splice(this.cardDeck[0],this.cardDeck.length - noOfCards);
+
+            }
+
+
+
+            for(var i=0; i<=blk.length;i++){
+                shuffle.push(blk.pop());
+            }
+
+
+            shuffle.push(retain);
+            this.cardDeck=shuffle;
+
+         //  console.log(shuffle.toString());
+
+        };
+
+        Deck.prototype.replaceCard=function(Card1,Card2) {
+
+
+            for (var i = 0; i < this.cardDeck.length; i++) {
+                if (Card1.value == this.cardDeck[i].value && Card1.suit == this.cardDeck[i].suit ||
+                        Card2.value == this.cardDeck[i].value && Card2.suit == this.cardDeck[i].suit) {
+                    this.cardDeck[i].value = -1;
+                    this.cardDeck[i].suit = 'Joker';
+
+
+
+                }
+              //  console.log(this.cardDeck.toString());
+            }
+
+
+
+            };
+
+
+
+        var deck = new Deck();
+        console.log(deck.toString());
+       // deck.shuffle();
+       //console.log(deck.toString());
+        //deck.shuffleBlock(3,2);
+       // console.log(deck.toString());
+        var c1=new Card(1,1);
+        var c2=new Card(2,1);
+
+
+    </script>
+</head>
+
+<body>
+
+
+</body>
+</html>

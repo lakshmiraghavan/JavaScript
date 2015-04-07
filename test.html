@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <script>
+
+
+
+
+
+
+
+
+/*
+ function intersection(arr1, arr2) {
+ var intersect = [];
+ for(var prop in arr2) {
+ if(arr1[prop] == arr2[prop]) {
+ intersect.push(arr2[prop]);
+
+ }
+ }
+ return intersect;
+ }
+
+
+
+
+ function union(arr1, arr2) {
+
+ var union=arr1;
+
+ for(var prop in arr2) {
+ if(arr1[prop] !== arr2[prop]) {
+ union.push(arr2[prop]);
+
+ }
+ }
+ return union;
+ }
+
+
+ var arr1 = ['id','name','date'];
+ var arr2 = ['name','id','date'];
+
+ console.log(intersection(arr1,arr2));
+
+ console.log(union(arr1,arr2));
+
+ for(var i= 0;i<arr1.length;++) {
+
+ if(arr2.indexOf[i]==0);
+ }
+
+ console.log("schema match");
+ }
+ else{
+ console.log("no match")
+ }
+ */
+
+
+
+
+
+
+function getRandomSubarray(arr, size) {
+    var shuffled = arr.slice(0), i = arr.length, temp, index;
+    while (i--) {
+        index = Math.floor((i + 1) * Math.random());
+        temp = shuffled[index];
+        shuffled[index] = shuffled[i];
+        shuffled[i] = temp;
+    }
+    return shuffled.slice(0, size);
+}
+
+var x = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
+var fiveRandomMembers = getRandomSubarray(x, 5);
+
+        console.log(fiveRandomMembers)
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

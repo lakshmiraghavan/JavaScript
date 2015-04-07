@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <script>
+        var nasdaq=document.querySelector('#CompanylistResults')
+        //console.log(Nasdaq);
+        var nBody=nasdaq.children[1];
+        //console.log(nBody);
+        var rows=Array.prototype.slice.call(nBody.children);
+
+        rows=rows.filter(function(tr, index){
+            return index%2===0;
+        })
+        //console.log(rows);
+
+        var companies=[];
+        //testing for data
+        //console.log(rows[0].children[0].textContent);
+        //console.log(rows[0].children[2].textContent);
+
+
+        rows.forEach(function(tr){
+            companies.push({
+                name:tr.children[0].textContent,
+                ipo: tr.children[2].textContent,
+                marketcap:tr.children[4].textContent
+            });
+        });
+
+        console.log(companies);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
